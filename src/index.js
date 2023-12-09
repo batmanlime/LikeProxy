@@ -27,46 +27,6 @@ app.listen(80, () => {
 })
 
 async function check() {
-    /*const browser = await puppeteer.launch({ headless: 'new' })
-    const page = await browser.newPage()
-    
-    for (let i = 0; i < games.length; i++) {
-        const game = games[i]
-        const link = baseLink + game
-        await page.goto(link)
-
-        try {
-            let tries = 0
-            async function check() {
-                tries++
-                if (tries > 10) {
-                    return
-                }
-                const likes = await page.evaluate(() => {
-                    const likes = document.querySelector('#vote-up-text')
-                    if (likes) {
-                        return likes.innerText
-                    } else {
-                        return null
-                    }
-                })
-                if (likes) {
-                    glikes[game] = likes
-                    return
-                }
-                setTimeout(() => {
-                    check()
-                }, 1000 * 1);
-            }
-            await check()
-        } catch (error) {
-            console.log("No likes", game)
-        }
-    }
-
-    await page.close()
-    await browser.close()*/
-
     const likes = await fetch(likeApi + games.join(",")).then(res => res.json())
 
     if (!likes.data) {
