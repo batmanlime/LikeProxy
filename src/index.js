@@ -9,6 +9,10 @@ const games = [
 const glikes = {}
 const likeApi = 'https://games.roblox.com/v1/games/votes?universeIds='
 
+process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+});
+
 app.get('/likes/:game', (req, res) => {
     const game = parseInt(req.params.game)
     if (glikes[game]) {
